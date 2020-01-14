@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center"><h1 class="display-3">Register</h1></div>
+                <br/>
+
+                <div th:if="${#fields.hasErrors('${userRegistrationModel}')}"
+                     th:replace="~{fragments/error :: errors(${#fields.errors('${userRegistrationModel}')})}"></div>
+
+                <br/>
+                <form th:action="@{/users/register}" method="post" th:object="${userRegistrationModel}" id="form">
+
+                    <div class="form-group row" th:classappend="${#fields.hasErrors('email') ? 'has-danger' : _}">
+                        <label th:for="*{email}" class="sr-only">Email</label>
+                        <input type="email" th:field="*{email}" class="form-control"
+                               th:classappend="${#fields.hasErrors('email') ? 'form-control-danger' : _}"
+                               placeholder="somebody@example.com"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('email')}"
+                             th:text="${error}">Error Message
+                        </div>
+                    </div>
+
+                    <div class="form-group row" th:classappend="${#fields.hasErrors('fullName') ? 'has-danger' : _}">
+                        <label th:for="*{fullName}" class="sr-only">Full Name</label>
+                        <input type="text" th:field="*{fullName}" pattern="^[a-zA-Z -.]+$" class="form-control"
+                               th:classappend="${#fields.hasErrors('fullName') ? 'form-control-danger' : _}"
+                               placeholder="Full Name"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('fullName')}"
+                             th:text="${error}">Error Message
+                        </div>
+                    </div>
+
+                    <div class="form-group row" th:classappend="${#fields.hasErrors('password') ? 'has-danger' : _}">
+                        <label th:for="*{password}" class="sr-only">Password</label>
+                        <input type="password" th:field="*{password}"
+                               id="key"
+                               class="form-control"
+                               th:classappend="${#fields.hasErrors('password') ? 'form-control-danger' : _}"
+                               placeholder="Password"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('password')}"
+                             th:text="${error}">Error Message
+                        </div>
+                    </div>
+
+                    <div class="form-group row"
+                         th:classappend="${#fields.hasErrors('confirmPassword') ? 'has-danger' : _}">
+                        <label th:for="*{confirmPassword}" class="sr-only">Confirm Password</label>
+                        <input type="password" th:field="*{confirmPassword}"
+                               th:classappend="${#fields.hasErrors('confirmPassword') ? 'form-control-danger' : _}"
+                               class="form-control" placeholder="Confirm Password"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('confirmPassword')}"
+                             th:text="${error}">Error Message
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                           value="Register" id="btn-register"/>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>
+</main>

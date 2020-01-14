@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head}"></head>
+
+<body>
+<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main id="content" th:replace="~{${view} :: main}"></main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<span th:insert="~{fragments/scripts-bundle}"></span>
+
+</body>
+</html>
+

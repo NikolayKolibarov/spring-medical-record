@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">Spring Starter</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li id="time" class="nav-item nav-link"></li>
+                </ul>
+
+                <ul class="navbar-nav" id="provider"
+                    th:attr="auth=${#authorization.expression('isAuthenticated()')}, admin=${#authorization.expression('hasRole(''ADMIN'')')}">
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="AdminDropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item">Dashboard</a>
+                        </div>
+                    </li>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a th:href="@{/users/profile}" class="nav-link" id="btn-profile">
+                                Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/users/logout}" class="nav-link" id="btn-logout">
+                                Logout
+                            </a>
+                        </li>
+                    </th:block>
+                    <th:block sec:authorize="isAnonymous()">
+                        <li class="nav-item">
+                            <a th:href="@{/users/register}" class="nav-link" id="btn-register">
+                                Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/users/login}" class="nav-link" id="btn-login">
+                                Login
+                            </a>
+                        </li>
+                    </th:block>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>

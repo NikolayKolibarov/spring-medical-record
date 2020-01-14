@@ -1,0 +1,38 @@
+.quote-card {
+    background: #fff;
+    color: #222222;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(34, 34, 34, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-card p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.quote-card cite {
+
+    font-size: 16px;
+    margin-top: 5px;
+    display: block;
+    font-weight: 200;
+    opacity: 0.8;
+}
+
+.quote-card.blue-card {
+
+    background: #0275d8;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(34, 34, 34, 0.12), 2px 4px 6px rgba(34, 34, 34, 0.24);
+}
+
+.quote-card.yellow-card {
+    text-align: right;
+    background: #f0b00b;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(34, 34, 34, 0.12), 2px 4px 6px rgba(34, 34, 34, 0.24);
+}
