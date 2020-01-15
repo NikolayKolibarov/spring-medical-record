@@ -2,6 +2,8 @@ package nnk.areas.users.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +13,8 @@ import nnk.areas.users.entities.Role;
 import nnk.areas.users.entities.User;
 import nnk.areas.users.models.binding.user.UserRegistrationModel;
 import nnk.areas.users.repositories.UserRepository;
+
+import java.util.Set;
 
 @Service
 @Transactional
@@ -54,5 +58,19 @@ public class SecurityUserDetailsServiceImpl implements SecurityUserDetailsServic
 
         return user;
 
+    }
+
+    @Override
+    public Set<User> getPatients() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User user = userRepository.findByEmail(username);
+
+        return user.getPatients();
+    }
+
+    @Override
+    public User getUser(Long id) {
+        return userRepository.findById(id);
     }
 }

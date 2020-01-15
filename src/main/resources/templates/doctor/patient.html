@@ -1,0 +1,16 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<main class="col-4 offset-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 th:text="${patient.fullName}"></h1>
+            </div>
+            <div class="col-12 examinations">
+                <a th:href="@{/users/patients/{id}/examinations/create(id=${patient.id})}" class="nav-link">Add Examination</a>
+            </div>
+        </div>
+    </div>
+</main>

@@ -12,6 +12,8 @@ import java.util.Set;
 @Table(name = "users")
 public class User implements UserDetails {
 
+    private Set<User> patients;
+
     private Long id;
 
     private String email;
@@ -23,6 +25,8 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>(0);
 
     private Set<Character> characters = new HashSet<>(0);
+
+
 
     public User(String email, String fullName, String password) {
         this.email = email;
@@ -63,6 +67,19 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "doctor_patient",
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "patient_id"))
+    public Set<User> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Set<User> patients) {
+        this.patients = patients;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)

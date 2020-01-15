@@ -26,6 +26,14 @@
                             <a class="dropdown-item">Dashboard</a>
                         </div>
                     </li>
+                    <th:block sec:authorize="hasRole('DOCTOR')">
+                        <li class="nav-item">
+                            <a th:href="@{/users/patients}" class="nav-link">
+                                Patients
+                            </a>
+                        </li>
+                    </th:block>
+                    <br>
                     <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item">
                             <a th:href="@{/users/profile}" class="nav-link" id="btn-profile">

@@ -1,0 +1,16 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<main class="col-4 offset-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Patients</h1>
+                <div th:each="patient : ${patients}">
+                    <a th:href="@{/users/patients/{id}(id=${patient.id})}" th:text="${patient.fullName}" class="nav-link">Link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
