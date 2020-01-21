@@ -44,10 +44,10 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-//    @ManyToMany(mappedBy = "roles")
-//    public Set<User> getUsers() {
-//        return users;
-//    }
+    @ManyToMany(mappedBy = "roles")
+    public Set<User> getUsers() {
+        return users;
+    }
 
     public void setUsers(Set<User> users) {
         this.users = users;

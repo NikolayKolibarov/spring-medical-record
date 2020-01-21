@@ -1,5 +1,6 @@
 package nnk.areas.users.services;
 
+import nnk.areas.users.models.binding.user.UserRegistrationModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import nnk.areas.users.entities.Role;
 import nnk.areas.users.entities.User;
-import nnk.areas.users.models.binding.user.UserRegistrationModel;
 import nnk.areas.users.repositories.UserRepository;
 
 import java.util.Set;

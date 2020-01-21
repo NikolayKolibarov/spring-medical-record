@@ -1,8 +1,8 @@
 package nnk.areas.users.services;
 
 import nnk.areas.users.entities.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import nnk.areas.users.models.binding.user.UserRegistrationModel;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Set;
 

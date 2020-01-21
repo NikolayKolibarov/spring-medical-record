@@ -11,9 +11,9 @@ public class ExaminationType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // Relations
-    @OneToMany(mappedBy = "type")
-    private Set<Examination> examinations;
+//    // Relations
+//    @OneToMany(mappedBy = "type")
+//    private Set<Examination> examinations;
 
     // Fields
     @Column(name = "name")
