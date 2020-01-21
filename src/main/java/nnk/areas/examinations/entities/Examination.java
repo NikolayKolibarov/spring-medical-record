@@ -5,7 +5,9 @@ import nnk.areas.users.entities.User;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -30,7 +32,7 @@ public class Examination {
             name = "examination_diagnosis",
             joinColumns = @JoinColumn(name = "examination_id"),
             inverseJoinColumns = @JoinColumn(name = "diagnosis_id"))
-    private Set<Diagnosis> diagnoses;
+    private Set<Diagnosis> diagnoses = new HashSet<>();
 
 //    @ManyToOne
 //    @JoinColumn(name = "type_id", nullable = false)
@@ -69,6 +71,10 @@ public class Examination {
 
     public void setPatient(User patient) {
         this.patient = patient;
+    }
+
+    public Set<Diagnosis> getDiagnoses() {
+        return this.diagnoses;
     }
 
     public void setDiagnoses(Set<Diagnosis> diagnoses) {

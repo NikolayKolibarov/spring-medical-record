@@ -1,6 +1,7 @@
 package nnk.areas.examinations.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
@@ -33,5 +34,9 @@ public class Diagnosis {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Examination> getExaminations() {
+        return examinations;
     }
 }

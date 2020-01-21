@@ -27,6 +27,9 @@ public class ExaminationCreateModel {
     @NotBlank
     private String additionalDiagnosis;
 
+    @NotNull
+    private Long patient;
+
     public String getDate() {
         return date;
     }
@@ -86,5 +89,11 @@ public class ExaminationCreateModel {
         this.additionalDiagnosis = additionalDiagnosis;
     }
 
+    public Long getPatient() {
+        return patient;
+    }
 
+    public void setPatient(Long patient) {
+        this.patient = patient;
+    }
 }
