@@ -69,9 +69,6 @@ public class Examination {
         this.doctor = doctor;
     }
 
-    public void setPatient(User patient) {
-        this.patient = patient;
-    }
 
     public Set<Diagnosis> getDiagnoses() {
         return this.diagnoses;
@@ -104,4 +101,13 @@ public class Examination {
     public void setAdditionalDiagnosis(String additionalDiagnosis) {
         this.additionalDiagnosis = additionalDiagnosis;
     }
+
+    public User getPatient() {
+        return patient;
+    }
+
+    public void setPatient(User patient) {
+        this.patient = patient;
+    }
+
 }

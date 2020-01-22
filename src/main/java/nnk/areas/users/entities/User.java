@@ -1,5 +1,6 @@
 package nnk.areas.users.entities;
 
+import nnk.areas.examinations.entities.Examination;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,9 +25,12 @@ public class User implements UserDetails {
 
     private Set<Role> roles = new HashSet<>(0);
 
-    private Set<Character> characters = new HashSet<>(0);
+    @OneToMany(mappedBy = "patient")
+    private Set<Examination> examinations;
 
-
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private User patient;
 
     public User(String email, String fullName, String password) {
         this.email = email;
