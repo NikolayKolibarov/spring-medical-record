@@ -29,6 +29,8 @@ public class ExaminationController {
         this.examinationService = examinationService;
     }
 
+
+
     @GetMapping("/users/patients/{patientId}/examinations/create")
     public String create(@PathVariable("patientId") long patientId,  Model model) {
         model.addAttribute("view", "examination/create");
@@ -56,13 +58,17 @@ public class ExaminationController {
         return "redirect:/users/patients/{patientId}";
     }
 
-//    @GetMapping(value = "/patients/{patientId}/examination/{examinationId}")
-//    public String getAllExaminations(@PathVariable Long patientId, @PathVariable Long examinationId, Model model) {
-//        model.addAttribute("view", "examination/profile");
-//        model.addAttribute("title", "Profile");
-//
-//        return "base-layout";
-//    }
+    @GetMapping("/users/patients/{patientId}/examinations/{examinationId}")
+    public String getPatientExaminations(@PathVariable Long patientId, @PathVariable Long examinationId, Model model) {
+        model.addAttribute("view", "examination/examination");
+        model.addAttribute("title", "Examination");
+        model.addAttribute("patientId", patientId);
+        model.addAttribute("examination", this.examinationService.findById(examinationId));
+
+        return "base-layout";
+    }
+
+
 
 
 }

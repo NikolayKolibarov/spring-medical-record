@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExaminationService {
     private final DiagnosisRepository diagnosisRepository;
@@ -55,8 +57,8 @@ public class ExaminationService {
 
     }
 
-    public void getPatientExaminations(Long patientId) {
-
+    public List<Examination> getPatientExaminations(Long patientId) {
+        return this.examinationRepository.findAllByPatientId(patientId);
     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import nnk.areas.users.entities.User;
@@ -52,11 +53,12 @@ public class UserController {
     @GetMapping("/patients/{id}")
     public String patientDetail(@PathVariable("id") long id,  Model model) {
         User patient = this.userDetailsService.getUser(id);
-        ArrayList<Examination> examinations = this.examinationService.getPatientExaminations(id);
+        List<Examination> examinations = this.examinationService.getPatientExaminations(id);
 
         model.addAttribute("view", "doctor/patient");
         model.addAttribute("title", patient.getFullName());
         model.addAttribute("patient", patient);
+        model.addAttribute("examinations", examinations);
 
         return "base-layout";
     }

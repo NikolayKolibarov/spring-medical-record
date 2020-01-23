@@ -1,6 +1,5 @@
-
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <main class="col-4 offset-4 text-center">
     <div class="container">
@@ -8,8 +7,17 @@
             <div class="col-12">
                 <h1 th:text="${patient.fullName}"></h1>
             </div>
-            <div class="col-12 examinations">
-                <a th:href="@{/users/patients/{id}/examinations/create(id=${patient.id})}" class="nav-link">Add Examination</a>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Examinations</h3>
+                    <a th:href="@{/users/patients/{id}/examinations/create(id=${patient.id})}" class="nav-link">Add
+                        Examination</a>
+                <div th:each="examination : ${examinations}">
+                    <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}(patientId=${patient.id}, examinationId=${examination.id})}"
+                       th:text="${examination.date}" class="nav-link">Link</a>
+                </div>
             </div>
         </div>
     </div>

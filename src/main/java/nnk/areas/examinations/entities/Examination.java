@@ -1,5 +1,6 @@
 package nnk.areas.examinations.entities;
 
+import nnk.areas.treatments.entities.Treatment;
 import nnk.areas.users.entities.Role;
 import nnk.areas.users.entities.User;
 
@@ -26,6 +27,9 @@ public class Examination {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private User patient;
+
+    @OneToMany(mappedBy = "examination")
+    private Set<Treatment> treatments;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -57,25 +61,36 @@ public class Examination {
     @Column(name = "additional_diagnosis")
     private String additionalDiagnosis;
 
-    public void addDiagnosis(Diagnosis diagnosis) {
-        this.diagnoses.add(diagnosis);
+    public Long getId() {
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setDoctor(User doctor) {
-        this.doctor = doctor;
-    }
-
-
     public Set<Diagnosis> getDiagnoses() {
         return this.diagnoses;
     }
 
-    public void setDiagnoses(Set<Diagnosis> diagnoses) {
-        this.diagnoses = diagnoses;
+    public void setPatient(User patient) {
+        this.patient = patient;
+    }
+
+    public void setDoctor(User doctor) {
+        this.doctor = doctor;
+    }
+
+    public Set<Treatment> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(Set<Treatment> treatments) {
+        this.treatments = treatments;
+    }
+
+    public String getDate() {
+        return this.date;
     }
 
     public void setDate(String date) {
@@ -86,28 +101,12 @@ public class Examination {
         this.time = time;
     }
 
-    public void setAmbulatoryNumber(Integer ambulatoryNumber) {
-        this.ambulatoryNumber = ambulatoryNumber;
+
+    public String getAnamnesis() {
+        return anamnesis;
     }
 
     public void setAnamnesis(String anamnesis) {
         this.anamnesis = anamnesis;
     }
-
-    public void setObjectiveCondition(String objectiveCondition) {
-        this.objectiveCondition = objectiveCondition;
-    }
-
-    public void setAdditionalDiagnosis(String additionalDiagnosis) {
-        this.additionalDiagnosis = additionalDiagnosis;
-    }
-
-    public User getPatient() {
-        return patient;
-    }
-
-    public void setPatient(User patient) {
-        this.patient = patient;
-    }
-
 }

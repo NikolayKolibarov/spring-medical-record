@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 th:text="${examination.anamnesis}"></h1>
+            </div>
+            <div class="col-12 examinations">
+                <h4>Treatments</h4>
+                <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examination.id})}" class="nav-link">Add Treatment</a>
+            </div>
+            <div class="col-12 examinations">
+                <a class="nav-link">Add Sick Note</a>
+            </div>
+        </div>
+    </div>
+</main>
