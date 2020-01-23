@@ -23,7 +23,7 @@
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item">Dashboard</a>
+                            <a th:href="@{/admin/dashboard}" class="dropdown-item">Dashboard</a>
                         </div>
                     </li>
                     <th:block sec:authorize="hasRole('DOCTOR')">

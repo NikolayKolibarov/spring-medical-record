@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<main class="col-4 offset-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                Total Doctors: <p th:text="${totalDoctors}" class="nav-link">Count</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                Total Patients: <p th:text="${totalPatients}" class="nav-link">Count</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                Total Examinations: <p th:text="${totalExaminations}" class="nav-link">Count</p>
+            </div>
+        </div>
+    </div>
+</main>

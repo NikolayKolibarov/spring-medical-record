@@ -61,4 +61,8 @@ public class ExaminationService {
         return this.examinationRepository.findAllByPatientId(patientId);
     }
 
+    public List<Examination> getAllExaminations() {
+        return this.examinationRepository.findAll();
+    }
+
 }
