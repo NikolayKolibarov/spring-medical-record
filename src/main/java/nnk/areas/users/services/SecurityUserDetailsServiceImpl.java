@@ -61,16 +61,13 @@ public class SecurityUserDetailsServiceImpl implements SecurityUserDetailsServic
     }
 
     @Override
-    public Set<User> getPatients() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        User user = userRepository.findByEmail(username);
-
-        return user.getPatients();
-    }
-
-    @Override
     public User getUser(Long id) {
         return userRepository.findById(id);
+    }
+
+    public User getAuthenticatedUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        return userRepository.findByEmail(username);
     }
 }

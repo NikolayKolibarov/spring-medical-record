@@ -33,7 +33,7 @@ public class TreatmentController {
 
     @GetMapping("/users/patients/{patientId}/examinations/{examinationId}/treatments/create")
     public String create(@PathVariable("patientId") long patientId, @PathVariable("examinationId") long examinationId,  Model model) {
-        model.addAttribute("view", "treatment/create");
+        model.addAttribute("view", "doctor/treatment/create");
         model.addAttribute("title", "Create Treatment");
         model.addAttribute("patientId", patientId);
         model.addAttribute("examinationId", examinationId);
@@ -61,11 +61,18 @@ public class TreatmentController {
 
     @GetMapping("/users/patients/{patientId}/examinations/{examinationId}/treatments/{treatmentId}")
     public String getPatientTreatments(@PathVariable Long patientId,  @PathVariable Long examinationId, @PathVariable Long treatmentId, Model model) {
-
-
-        model.addAttribute("view", "treatment/treatment");
+        model.addAttribute("view", "doctor/treatment/treatment");
         model.addAttribute("title", "Treatment");
         model.addAttribute("patientId", patientId);
+        model.addAttribute("treatment", this.treatmentService.findById(treatmentId));
+
+        return "base-layout";
+    }
+
+    @GetMapping("/users/profile/examinations/{examinationId}/treatments/{treatmentId}")
+    public String getUserTreatments(@PathVariable Long examinationId, @PathVariable Long treatmentId, Model model) {
+        model.addAttribute("view", "user/treatment");
+        model.addAttribute("title", "Treatment");
         model.addAttribute("treatment", this.treatmentService.findById(treatmentId));
 
         return "base-layout";

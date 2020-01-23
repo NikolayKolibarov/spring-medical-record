@@ -33,7 +33,7 @@ public class ExaminationController {
 
     @GetMapping("/users/patients/{patientId}/examinations/create")
     public String create(@PathVariable("patientId") long patientId,  Model model) {
-        model.addAttribute("view", "examination/create");
+        model.addAttribute("view", "doctor/examination/create");
         model.addAttribute("title", "Create Examination");
         model.addAttribute("patientId", patientId);
         model.addAttribute("diagnoses", this.diagnosisService.findAll());
@@ -60,9 +60,18 @@ public class ExaminationController {
 
     @GetMapping("/users/patients/{patientId}/examinations/{examinationId}")
     public String getPatientExaminations(@PathVariable Long patientId, @PathVariable Long examinationId, Model model) {
-        model.addAttribute("view", "examination/examination");
+        model.addAttribute("view", "doctor/examination/examination");
         model.addAttribute("title", "Examination");
         model.addAttribute("patientId", patientId);
+        model.addAttribute("examination", this.examinationService.findById(examinationId));
+
+        return "base-layout";
+    }
+
+    @GetMapping("/users/profile/examinations/{examinationId}")
+    public String getUserExaminations(@PathVariable Long examinationId, Model model) {
+        model.addAttribute("view", "user/examination");
+        model.addAttribute("title", "Examination");
         model.addAttribute("examination", this.examinationService.findById(examinationId));
 
         return "base-layout";

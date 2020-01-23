@@ -5,14 +5,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 th:text="${examination.anamnesis}"></h1>
+                <h1 th:text="${examination.date}"></h1>
             </div>
             <div class="col-12 examinations">
-                <h4>Treatments</h4>
-                <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examination.id})}" class="nav-link">Add Treatment</a>
+                <h4>Treatment</h4>
+                <div th:each="treatment : ${examination.treatments}">
+                    <a th:href="@{/users/profile/examinations/{examinationId}/treatments/{treatmentId}(examinationId=${examination.id}, treatmentId=${treatment.id})}"
+                       th:text="${treatment.date}" class="nav-link">Link</a>
+                </div>
             </div>
             <div class="col-12 examinations">
-                <a class="nav-link">Add Sick Note</a>
+                <h4>Sick Note</h4>
             </div>
         </div>
     </div>

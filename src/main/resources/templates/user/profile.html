@@ -8,5 +8,15 @@
                 <h1>Profile</h1>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h3>Examinations</h3>
+                <div th:each="examination : ${user.examinations}">
+                    <a th:href="@{/users/profile/examinations/{examinationId}(examinationId=${examination.id})}"
+                       th:text="${examination.date}" class="nav-link">Link</a>
+                </div>
+            </div>
+        </div>
     </div>
 </main>

@@ -23,10 +23,9 @@ public class User implements UserDetails {
 
     private String password;
 
-    private Set<Role> roles = new HashSet<>(0);
+    private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "patient")
-    private Set<Examination> examinations;
+    private Set<Examination> examinations = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
@@ -49,6 +48,15 @@ public class User implements UserDetails {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @OneToMany(mappedBy = "patient")
+    public Set<Examination> getExaminations() {
+        return examinations;
+    }
+
+    public void setExaminations(Set<Examination> examinations) {
+        this.examinations = examinations;
     }
 
     @Column(name = "email", unique = true, nullable = false)

@@ -9,8 +9,8 @@ import java.util.Set;
 public interface SecurityUserDetailsService extends UserDetailsService {
     void register(UserRegistrationModel userRegistrationModel);
 
-    public Set<User> getPatients();
-
     public User getUser(Long id);
+
+    public User getAuthenticatedUser();
 
 }

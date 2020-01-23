@@ -1,13 +1,9 @@
 package nnk.areas.examinations.entities;
 
 import nnk.areas.treatments.entities.Treatment;
-import nnk.areas.users.entities.Role;
 import nnk.areas.users.entities.User;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -100,7 +96,6 @@ public class Examination {
     public void setTime(String time) {
         this.time = time;
     }
-
 
     public String getAnamnesis() {
         return anamnesis;

@@ -8,7 +8,7 @@
                 <h1 th:text="${examination.date}"></h1>
             </div>
             <div class="col-12 examinations">
-                <h4>Treatments</h4>
+                <h4>Treatment</h4>
                 <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examination.id})}" class="nav-link">Add Treatment</a>
                 <div th:each="treatment : ${examination.treatments}">
                     <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/{treatmentId}(patientId=${patientId}, examinationId=${examination.id}, treatmentId=${treatment.id})}"
@@ -16,6 +16,7 @@
                 </div>
             </div>
             <div class="col-12 examinations">
+                <h4>Sick Note</h4>
                 <a class="nav-link">Add Sick Note</a>
             </div>
         </div>
