@@ -1,5 +1,6 @@
 package nnk.areas.examinations.entities;
 
+import nnk.areas.sick_notes.entities.SickNote;
 import nnk.areas.treatments.entities.Treatment;
 import nnk.areas.users.entities.User;
 
@@ -26,6 +27,9 @@ public class Examination {
 
     @OneToMany(mappedBy = "examination")
     private Set<Treatment> treatments;
+
+    @OneToOne(mappedBy = "examination")
+    private SickNote sickNote;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -83,6 +87,14 @@ public class Examination {
 
     public void setTreatments(Set<Treatment> treatments) {
         this.treatments = treatments;
+    }
+
+    public SickNote getSickNote() {
+        return sickNote;
+    }
+
+    public void setSickNote(SickNote sickNote) {
+        this.sickNote = sickNote;
     }
 
     public String getDate() {
