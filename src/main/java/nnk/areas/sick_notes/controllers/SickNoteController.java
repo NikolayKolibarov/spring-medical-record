@@ -57,7 +57,7 @@ public class SickNoteController {
         model.addAttribute("view", "doctor/sick-note/sick-note");
         model.addAttribute("title", "Sick Note");
         model.addAttribute("patientId", patientId);
-        model.addAttribute("treatment", this.sickNoteService.findById(sickNoteId));
+        model.addAttribute("sickNote", this.sickNoteService.findById(sickNoteId));
 
         return "base-layout";
     }
@@ -66,7 +66,7 @@ public class SickNoteController {
     public String getUserSickNotes(@PathVariable Long examinationId, @PathVariable Long sickNoteId, Model model) {
         model.addAttribute("view", "user/treatment");
         model.addAttribute("title", "Sick Note");
-        model.addAttribute("treatment", this.sickNoteService.findById(sickNoteId));
+        model.addAttribute("sickNote", this.sickNoteService.findById(sickNoteId));
 
         return "base-layout";
     }
