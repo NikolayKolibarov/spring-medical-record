@@ -13,7 +13,7 @@ public class SickNote {
     private Long id;
 
     // Relations
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "examination_id", nullable = false)
     private Examination examination;
 

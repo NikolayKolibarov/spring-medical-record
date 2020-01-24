@@ -3,7 +3,7 @@ package nnk.areas.sick_notes.services;
 import nnk.areas.examinations.entities.Examination;
 import nnk.areas.examinations.repositories.ExaminationRepository;
 import nnk.areas.sick_notes.entities.SickNote;
-import nnk.areas.sick_notes.models.binding.treatment.SickNoteCreateModel;
+import nnk.areas.sick_notes.models.binding.sick_note.SickNoteCreateModel;
 import nnk.areas.sick_notes.repositories.SickNoteRepository;
 import nnk.areas.users.repositories.UserRepository;
 import org.modelmapper.ModelMapper;

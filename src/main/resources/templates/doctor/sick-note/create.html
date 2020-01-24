@@ -4,14 +4,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="text-center"><h1 class="display-3">Create Treatment</h1></div>
+                <div class="text-center"><h1 class="display-3">Create Sick Note</h1></div>
                 <br/>
 
-                <div th:if="${#fields.hasErrors('${treatmentCreateModel}')}"
-                     th:replace="~{fragments/error :: errors(${#fields.errors('${treatmentCreateModel}')})}"></div>
+                <div th:if="${#fields.hasErrors('${sickNoteCreateModel}')}"
+                     th:replace="~{fragments/error :: errors(${#fields.errors('${sickNoteCreateModel}')})}"></div>
 
                 <br/>
-                <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examinationId})}" method="post" th:object="${treatmentCreateModel}" id="form">
+                <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/create(patientId=${patientId}, examinationId=${examinationId})}"
+                      method="post" th:object="${sickNoteCreateModel}" id="form">
 
                     <div class="form-group row" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
                         <label th:for="*{date}">Date</label>
@@ -23,30 +24,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('description') ? 'has-danger' : _}">
-                        <label th:for="*{description}">Description</label>
-                        <input type="text" th:field="*{description}" class="form-control"
-                               th:classappend="${#fields.hasErrors('description') ? 'form-control-danger' : _}"
-                               placeholder="Description"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('description')}"
+                    <div class="form-group row" th:classappend="${#fields.hasErrors('days') ? 'has-danger' : _}">
+                        <label th:for="*{days}">Days</label>
+                        <input type="number" th:field="*{days}" class="form-control"
+                               th:classappend="${#fields.hasErrors('days') ? 'form-control-danger' : _}"/>
+                        <div class="form-control-feedback" th:each="error : ${#fields.errors('days')}"
                              th:text="${error}">Error Message
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label>Drug</label>
-                        <select name="drug" id="">
-                            <option value="">Select</option>
-                            <option th:each="drug : ${drugs}" th:value="${drug.id}"
-                                    th:text="${drug.name}">Drug
-                            </option>
-                        </select>
                     </div>
 
                     <input type="hidden" name="examination" th:value="${examinationId}">
 
                     <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
-                           value="Create Treatment" id="btn-register"/>
+                           value="Create Sick Note" id="btn-register"/>
                 </form>
                 <br/>
             </div>

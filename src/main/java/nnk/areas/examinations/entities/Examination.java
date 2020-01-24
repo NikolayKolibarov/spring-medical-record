@@ -6,6 +6,7 @@ import nnk.areas.users.entities.User;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,10 +27,10 @@ public class Examination {
     private User patient;
 
     @OneToMany(mappedBy = "examination")
-    private Set<Treatment> treatments;
+    private List<Treatment> treatments;
 
-    @OneToOne(mappedBy = "examination")
-    private SickNote sickNote;
+    @OneToMany(mappedBy = "examination")
+    private List<SickNote> sickNotes;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -81,20 +82,20 @@ public class Examination {
         this.doctor = doctor;
     }
 
-    public Set<Treatment> getTreatments() {
+    public List<Treatment> getTreatments() {
         return treatments;
     }
 
-    public void setTreatments(Set<Treatment> treatments) {
+    public void setTreatments(List<Treatment> treatments) {
         this.treatments = treatments;
     }
 
-    public SickNote getSickNote() {
-        return sickNote;
+    public List<SickNote> getSickNotes() {
+        return sickNotes;
     }
 
-    public void setSickNote(SickNote sickNote) {
-        this.sickNote = sickNote;
+    public void setSickNotes(List<SickNote> sickNotes) {
+        this.sickNotes = sickNotes;
     }
 
     public String getDate() {

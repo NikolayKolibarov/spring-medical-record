@@ -1,4 +1,4 @@
-package nnk.areas.sick_notes.models.binding.treatment;
+package nnk.areas.sick_notes.models.binding.sick_note;
 
 import org.hibernate.validator.constraints.NotBlank;
 

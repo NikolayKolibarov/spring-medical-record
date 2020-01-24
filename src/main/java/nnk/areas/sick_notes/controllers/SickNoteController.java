@@ -1,6 +1,6 @@
 package nnk.areas.sick_notes.controllers;
 
-import nnk.areas.sick_notes.models.binding.treatment.SickNoteCreateModel;
+import nnk.areas.sick_notes.models.binding.sick_note.SickNoteCreateModel;
 import nnk.areas.sick_notes.services.SickNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
