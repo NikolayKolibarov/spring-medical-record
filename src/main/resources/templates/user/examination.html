@@ -16,6 +16,10 @@
             </div>
             <div class="col-12 examinations">
                 <h4>Sick Note</h4>
+                <div th:each="sickNote : ${examination.sickNotes}">
+                    <a th:href="@{/users/profile/examinations/{examinationId}/sick-notes/{sickNoteId}(examinationId=${examination.id}, sickNoteId=${sickNote.id})}"
+                       th:text="${sickNote.date}" class="nav-link">Link</a>
+                </div>
             </div>
         </div>
     </div>

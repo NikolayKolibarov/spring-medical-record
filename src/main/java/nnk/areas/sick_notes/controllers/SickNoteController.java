@@ -64,7 +64,7 @@ public class SickNoteController {
 
     @GetMapping("/users/profile/examinations/{examinationId}/sick-notes/{sickNoteId}")
     public String getUserSickNotes(@PathVariable Long examinationId, @PathVariable Long sickNoteId, Model model) {
-        model.addAttribute("view", "user/treatment");
+        model.addAttribute("view", "user/sick-note");
         model.addAttribute("title", "Sick Note");
         model.addAttribute("sickNote", this.sickNoteService.findById(sickNoteId));
 
