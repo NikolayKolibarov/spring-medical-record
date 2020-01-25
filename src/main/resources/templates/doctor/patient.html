@@ -1,23 +1,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h1 th:text="${patient.fullName}"></h1>
             </div>
-
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Examinations</h3>
-                    <a th:href="@{/users/patients/{id}/examinations/create(id=${patient.id})}" class="nav-link">Add
-                        Examination</a>
-                <div th:each="examination : ${examinations}">
-                    <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}(patientId=${patient.id}, examinationId=${examination.id})}"
-                       th:text="${examination.date}" class="nav-link">Link</a>
+
+                <div class="card card-block">
+                    <div class="card-body">
+                        <h3>Examinations</h3>
+                        <a th:href="@{/users/patients/{id}/examinations/create(id=${patient.id})}" class="btn btn-outline-warning btn-lg btn-block">Add
+                            Examination</a>
+                        <br>
+                        <ul class="list-group">
+
+                        </ul>
+                        <li class="list-group-item" th:each="examination : ${examinations}">
+                            <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}(patientId=${patient.id}, examinationId=${examination.id})}"
+                               th:text="${examination.date}" class="nav-link">Link</a>
+                        </li>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

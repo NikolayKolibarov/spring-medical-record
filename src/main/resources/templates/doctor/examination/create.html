@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -11,87 +11,92 @@
                      th:replace="~{fragments/error :: errors(${#fields.errors('${examinationCreateModel}')})}"></div>
 
                 <br/>
-                <form th:action="@{/users/patients/{patientId}/examinations/create(patientId=${patientId})}" method="post" th:object="${examinationCreateModel}" id="form">
+                <div class="card card-block">
+                    <div class="card-body">
+                        <form th:action="@{/users/patients/{patientId}/examinations/create(patientId=${patientId})}" method="post" th:object="${examinationCreateModel}" id="form">
 
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
-                        <label th:for="*{date}">Date</label>
-                        <input type="date" th:field="*{date}" class="form-control"
-                               th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
-                               placeholder="Date"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
-                             th:text="${error}">Error Message
-                        </div>
+                            <div class="form-group" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
+                                <label th:for="*{date}">Date</label>
+                                <input type="date" th:field="*{date}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
+                                       placeholder="Date"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group" th:classappend="${#fields.hasErrors('time') ? 'has-danger' : _}">
+                                <label th:for="*{time}">Time</label>
+                                <input type="time" th:field="*{time}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('time') ? 'form-control-danger' : _}"
+                                       placeholder="Time"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('time')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('ambulatoryNumber') ? 'has-danger' : _}">
+                                <label th:for="*{ambulatoryNumber}">AmbulatoryNumber</label>
+                                <input type="number" th:field="*{ambulatoryNumber}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('ambulatoryNumber') ? 'form-control-danger' : _}"
+                                       placeholder="AmbulatoryNumber"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('ambulatoryNumber')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" th:classappend="${#fields.hasErrors('anamnesis') ? 'has-danger' : _}">
+                                <label th:for="*{anamnesis}">Anamnesis</label>
+                                <input type="text" th:field="*{anamnesis}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('anamnesis') ? 'form-control-danger' : _}"
+                                       placeholder="Anamnesis"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('anamnesis')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('objectiveCondition') ? 'has-danger' : _}">
+                                <label th:for="*{objectiveCondition}">Objective Condition</label>
+                                <input type="text" th:field="*{objectiveCondition}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('objectiveCondition') ? 'form-control-danger' : _}"
+                                       placeholder="Objective Condition"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('objectiveCondition')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Diagnosis</label>
+                                <select name="diagnosis" id="">
+                                    <option value="">Select</option>
+                                    <option th:each="diagnosis : ${diagnoses}" th:value="${diagnosis.id}"
+                                            th:text="${diagnosis.name}">Diagnosis
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('additionalDiagnosis') ? 'has-danger' : _}">
+                                <label th:for="*{additionalDiagnosis}">Additional Diagnosis</label>
+                                <input type="text" th:field="*{additionalDiagnosis}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('additionalDiagnosis') ? 'form-control-danger' : _}"
+                                       placeholder="Additional Diagnosis"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('additionalDiagnosis')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="patient" th:value="${patientId}">
+
+                            <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                                   value="Create Examination" id="btn-register"/>
+                        </form>
+
                     </div>
-
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('time') ? 'has-danger' : _}">
-                        <label th:for="*{time}">Time</label>
-                        <input type="time" th:field="*{time}" class="form-control"
-                               th:classappend="${#fields.hasErrors('time') ? 'form-control-danger' : _}"
-                               placeholder="Time"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('time')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <div class="form-group row"
-                         th:classappend="${#fields.hasErrors('ambulatoryNumber') ? 'has-danger' : _}">
-                        <label th:for="*{ambulatoryNumber}">AmbulatoryNumber</label>
-                        <input type="number" th:field="*{ambulatoryNumber}" class="form-control"
-                               th:classappend="${#fields.hasErrors('ambulatoryNumber') ? 'form-control-danger' : _}"
-                               placeholder="AmbulatoryNumber"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('ambulatoryNumber')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('anamnesis') ? 'has-danger' : _}">
-                        <label th:for="*{anamnesis}">Anamnesis</label>
-                        <input type="text" th:field="*{anamnesis}" class="form-control"
-                               th:classappend="${#fields.hasErrors('anamnesis') ? 'form-control-danger' : _}"
-                               placeholder="Anamnesis"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('anamnesis')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <div class="form-group row"
-                         th:classappend="${#fields.hasErrors('objectiveCondition') ? 'has-danger' : _}">
-                        <label th:for="*{objectiveCondition}">Objective Condition</label>
-                        <input type="text" th:field="*{objectiveCondition}" class="form-control"
-                               th:classappend="${#fields.hasErrors('objectiveCondition') ? 'form-control-danger' : _}"
-                               placeholder="Objective Condition"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('objectiveCondition')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label>Diagnosis</label>
-                        <select name="diagnosis" id="">
-                            <option value="">Select</option>
-                            <option th:each="diagnosis : ${diagnoses}" th:value="${diagnosis.id}"
-                                    th:text="${diagnosis.name}">Diagnosis
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group row"
-                         th:classappend="${#fields.hasErrors('additionalDiagnosis') ? 'has-danger' : _}">
-                        <label th:for="*{additionalDiagnosis}">Additional Diagnosis</label>
-                        <input type="text" th:field="*{additionalDiagnosis}" class="form-control"
-                               th:classappend="${#fields.hasErrors('additionalDiagnosis') ? 'form-control-danger' : _}"
-                               placeholder="Additional Diagnosis"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('additionalDiagnosis')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="patient" th:value="${patientId}">
-
-                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
-                           value="Create Examination" id="btn-register"/>
-                </form>
+                </div>
                 <br/>
             </div>
         </div>

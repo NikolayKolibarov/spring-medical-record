@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -11,33 +11,37 @@
                      th:replace="~{fragments/error :: errors(${#fields.errors('${sickNoteCreateModel}')})}"></div>
 
                 <br/>
-                <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/create(patientId=${patientId}, examinationId=${examinationId})}"
-                      method="post" th:object="${sickNoteCreateModel}" id="form">
+                <div class="card card-block">
+                    <div class="card-body">
+                        <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/create(patientId=${patientId}, examinationId=${examinationId})}"
+                              method="post" th:object="${sickNoteCreateModel}" id="form">
 
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
-                        <label th:for="*{date}">Date</label>
-                        <input type="date" th:field="*{date}" class="form-control"
-                               th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
-                               placeholder="Date"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
-                             th:text="${error}">Error Message
-                        </div>
+                            <div class="form-group" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
+                                <label th:for="*{date}">Date</label>
+                                <input type="date" th:field="*{date}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
+                                       placeholder="Date"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group" th:classappend="${#fields.hasErrors('days') ? 'has-danger' : _}">
+                                <label th:for="*{days}">Days</label>
+                                <input type="number" th:field="*{days}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('days') ? 'form-control-danger' : _}"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('days')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="examination" th:value="${examinationId}">
+
+                            <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                                   value="Create Sick Note" id="btn-register"/>
+                        </form>
                     </div>
-
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('days') ? 'has-danger' : _}">
-                        <label th:for="*{days}">Days</label>
-                        <input type="number" th:field="*{days}" class="form-control"
-                               th:classappend="${#fields.hasErrors('days') ? 'form-control-danger' : _}"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('days')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="examination" th:value="${examinationId}">
-
-                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
-                           value="Create Sick Note" id="btn-register"/>
-                </form>
+                </div>
                 <br/>
             </div>
         </div>

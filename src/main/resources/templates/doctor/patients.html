@@ -2,15 +2,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h1>Patients</h1>
-                <a th:href="@{/users/patients/add}">Add Patient</a>
-                <div th:each="patient : ${patients}">
-                    <a th:href="@{/users/patients/{id}(id=${patient.id})}" th:text="${patient.fullName}" class="nav-link">Link</a>
+                <div class="card card-block">
+                    <div class="card-body">
+                        <a th:href="@{/users/patients/add}" class="btn btn-outline-warning btn-lg btn-block">Add Patient</a>
+                        <br>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:each="patient : ${patients}">
+                                <a th:href="@{/users/patients/{id}(id=${patient.id})}" th:text="${patient.fullName}" class="nav-link">Link</a>
+
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

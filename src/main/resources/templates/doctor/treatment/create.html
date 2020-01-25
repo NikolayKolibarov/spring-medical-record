@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -11,43 +11,51 @@
                      th:replace="~{fragments/error :: errors(${#fields.errors('${treatmentCreateModel}')})}"></div>
 
                 <br/>
-                <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examinationId})}" method="post" th:object="${treatmentCreateModel}" id="form">
+                <div class="card card-block">
+                    <div class="card-body">
+                        <form th:action="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examinationId})}"
+                              method="post" th:object="${treatmentCreateModel}" id="form">
 
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
-                        <label th:for="*{date}">Date</label>
-                        <input type="date" th:field="*{date}" class="form-control"
-                               th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
-                               placeholder="Date"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
-                             th:text="${error}">Error Message
-                        </div>
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('date') ? 'has-danger' : _}">
+                                <label th:for="*{date}">Date</label>
+                                <input type="date" th:field="*{date}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('date') ? 'form-control-danger' : _}"
+                                       placeholder="Date"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('date')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('description') ? 'has-danger' : _}">
+                                <label th:for="*{description}">Description</label>
+                                <input type="text" th:field="*{description}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('description') ? 'form-control-danger' : _}"
+                                       placeholder="Description"/>
+                                <div class="form-control-feedback" th:each="error : ${#fields.errors('description')}"
+                                     th:text="${error}">Error Message
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Drug</label>
+                                <select name="drug" id="">
+                                    <option value="">Select</option>
+                                    <option th:each="drug : ${drugs}" th:value="${drug.id}"
+                                            th:text="${drug.name}">Drug
+                                    </option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" name="examination" th:value="${examinationId}">
+
+                            <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                                   value="Create Treatment" id="btn-register"/>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="form-group row" th:classappend="${#fields.hasErrors('description') ? 'has-danger' : _}">
-                        <label th:for="*{description}">Description</label>
-                        <input type="text" th:field="*{description}" class="form-control"
-                               th:classappend="${#fields.hasErrors('description') ? 'form-control-danger' : _}"
-                               placeholder="Description"/>
-                        <div class="form-control-feedback" th:each="error : ${#fields.errors('description')}"
-                             th:text="${error}">Error Message
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label>Drug</label>
-                        <select name="drug" id="">
-                            <option value="">Select</option>
-                            <option th:each="drug : ${drugs}" th:value="${drug.id}"
-                                    th:text="${drug.name}">Drug
-                            </option>
-                        </select>
-                    </div>
-
-                    <input type="hidden" name="examination" th:value="${examinationId}">
-
-                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
-                           value="Create Treatment" id="btn-register"/>
-                </form>
                 <br/>
             </div>
         </div>

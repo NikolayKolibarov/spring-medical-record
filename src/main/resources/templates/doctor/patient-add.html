@@ -1,24 +1,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<main class="col-4 offset-4 text-center">
+<main class="col-4 offset-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="text-center"><h1 class="display-3">Add Patient</h1></div>
                 <br/>
+                <div class="card card-block">
+                    <div class="card-body">
+                        <form th:action="@{/users/patients/add}" th:object="${patientAddModel}" method="post" id="form">
+                            <div class="form-group">
+                                <label th:for="*{patient}">Patient ID</label>
+                                <input type="number" th:field="*{patient}" class="form-control"/>
+                            </div>
 
-                <br/>
-                <form th:action="@{/users/patients/add}" th:object="${patientAddModel}" method="post" id="form">
-
-                    <div class="form-group row">
-                        <label th:for="*{patient}">Patient ID</label>
-                        <input type="number" th:field="*{patient}" class="form-control"/>
-
+                            <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
+                                   value="Add Patient" id="btn-register"/>
+                        </form>
                     </div>
-
-                    <input type="submit" class="btn btn-outline-warning btn-lg btn-block"
-                           value="Add Patient" id="btn-register"/>
-                </form>
+                </div>
                 <br/>
             </div>
         </div>
