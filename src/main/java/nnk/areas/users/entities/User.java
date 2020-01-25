@@ -7,13 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
 
-    private Set<User> patients;
+    private List<User> patients;
 
     private Long id;
 
@@ -86,11 +87,11 @@ public class User implements UserDetails {
             name = "doctor_patient",
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "patient_id"))
-    public Set<User> getPatients() {
+    public List<User> getPatients() {
         return patients;
     }
 
-    public void setPatients(Set<User> patients) {
+    public void setPatients(List<User> patients) {
         this.patients = patients;
     }
 

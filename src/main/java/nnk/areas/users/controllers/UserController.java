@@ -50,7 +50,7 @@ public class UserController {
 
     @GetMapping("/patients")
     public String patients(Model model) {
-        Set<User> patients = this.doctorService.getPatients();
+        List<User> patients = this.doctorService.getPatients();
 
         model.addAttribute("view", "doctor/patients");
         model.addAttribute("title", "Profile");
