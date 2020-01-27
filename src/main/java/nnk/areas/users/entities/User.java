@@ -1,6 +1,7 @@
 package nnk.areas.users.entities;
 
 import nnk.areas.examinations.entities.Examination;
+import nnk.areas.treatments.entities.Treatment;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -31,6 +32,8 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private User patient;
+
+    private DoctorDetail doctorDetail;
 
     public User(String email, String fullName, String password) {
         this.email = email;
@@ -107,6 +110,15 @@ public class User implements UserDetails {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    @OneToOne(mappedBy = "doctor")
+    public DoctorDetail getDoctorDetail() {
+        return doctorDetail;
+    }
+
+    public void setDoctorDetail(DoctorDetail doctorDetail) {
+        this.doctorDetail = doctorDetail;
     }
 
     @Transient

@@ -17,6 +17,10 @@ public class Specialty {
     @Column(name = "name", nullable = false)
     private String name;
 
+    public Specialty() {
+
+    }
+
 
     public Specialty(String role) {
         this.setName(role);

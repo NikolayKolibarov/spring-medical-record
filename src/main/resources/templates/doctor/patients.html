@@ -11,6 +11,7 @@
                     <div class="card-body">
                         <a th:href="@{/users/patients/add}" class="btn btn-outline-warning btn-lg btn-block">Add Patient</a>
                         <br>
+                        <p th:text="${'Total count: ' + #lists.size(patients)}"></p>
                         <ul class="list-group">
                             <li class="list-group-item" th:each="patient : ${patients}">
                                 <a th:href="@{/users/patients/{id}(id=${patient.id})}" th:text="${patient.fullName}" class="nav-link">Link</a>
@@ -20,6 +21,7 @@
                     </div>
                 </div>
 
+                <br/>
             </div>
         </div>
     </div>

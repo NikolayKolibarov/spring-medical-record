@@ -6,23 +6,33 @@
         <div class="row">
             <div class="col-12">
                 <h1 th:text="${examination.date}"></h1>
+                <p th:text="${examination.anamnesis}"></p>
             </div>
-            <div class="col-12 examinations">
-                <h4>Treatment</h4>
-                <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examination.id})}" th:if="${examination.treatments.empty}" class="nav-link">Add Treatment</a>
-                <div th:each="treatment : ${examination.treatments}">
-                    <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/{treatmentId}(patientId=${patientId}, examinationId=${examination.id}, treatmentId=${treatment.id})}"
-                       th:text="${treatment.date}" class="nav-link">Link</a>
-                </div>
-            </div>
-            <div class="col-12 examinations">
-                <h4>Sick Note</h4>
-                <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/create(patientId=${patientId}, examinationId=${examination.id})}" th:if="${examination.sickNotes.empty}" class="nav-link">Add Sick Note</a>
-                <div th:each="sickNote : ${examination.sickNotes}">
-                    <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/{sickNoteId}(patientId=${patientId}, examinationId=${examination.id}, sickNoteId=${sickNote.id})}"
-                       th:text="${sickNote.date}" class="nav-link">Link</a>
+        </div>
+        <div class="card card-block">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 examinations">
+                        <h4>Treatment</h4>
+                        <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/create(patientId=${patientId}, examinationId=${examination.id})}"
+                           th:if="${examination.treatments.empty}" class="nav-link">Add Treatment</a>
+                        <div th:each="treatment : ${examination.treatments}">
+                            <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/treatments/{treatmentId}(patientId=${patientId}, examinationId=${examination.id}, treatmentId=${treatment.id})}"
+                               th:text="${treatment.date}" class="nav-link">Link</a>
+                        </div>
+                    </div>
+                    <div class="col-6 examinations">
+                        <h4>Sick Note</h4>
+                        <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/create(patientId=${patientId}, examinationId=${examination.id})}"
+                           th:if="${examination.sickNotes.empty}" class="nav-link">Add Sick Note</a>
+                        <div th:each="sickNote : ${examination.sickNotes}">
+                            <a th:href="@{/users/patients/{patientId}/examinations/{examinationId}/sick-notes/{sickNoteId}(patientId=${patientId}, examinationId=${examination.id}, sickNoteId=${sickNote.id})}"
+                               th:text="${sickNote.date}" class="nav-link">Link</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </main>

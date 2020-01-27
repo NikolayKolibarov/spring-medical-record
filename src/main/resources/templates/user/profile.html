@@ -9,11 +9,33 @@
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-block">
+                    <div class="card-body">
+                        <h3 class="card-title">Doctor Details</h3>
+                        <hr>
+                        <p class="card-subtitle mb-2" th:text="${'UIN: ' + user.doctorDetail.uin}"></p>
+                        <p class="card-subtitle mb-2" th:text="${'Patients: ' + #lists.size(user.patients)}"></p>
+                        Specialties:
+                        <ul class="list-group">
+                            <li th:each="specialty : ${user.doctorDetail.specialties}" th:text="${specialty.name}"
+                                class="list-group-item">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card card-block">
                     <div class="card-body">
                         <h3>Examinations</h3>
+                        <hr>
+                        <p th:if="${user.examinations.empty}">No examinations yet.</p>
                         <ul class="list-group">
                             <li th:each="examination : ${user.examinations}" class="list-group-item">
                                 <a th:href="@{/users/profile/examinations/{examinationId}(examinationId=${examination.id})}"
@@ -23,7 +45,7 @@
 
                     </div>
                 </div>
-
+                <br/>
             </div>
         </div>
     </div>
