@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TreatmentService {
     private final DrugRepository drugRepository;
@@ -47,5 +49,10 @@ public class TreatmentService {
         this.treatmentRepository.save(treatment);
 
     }
+
+    public List<Treatment> getAllTreatments() {
+        return this.treatmentRepository.findAll();
+    }
+
 
 }

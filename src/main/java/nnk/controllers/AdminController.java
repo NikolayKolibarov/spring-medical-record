@@ -36,6 +36,7 @@ public class AdminController {
         model.addAttribute("totalDoctors", 10);
         model.addAttribute("totalPatients", 10);
         model.addAttribute("totalExaminations", this.examinationService.getAllExaminations().size());
+        model.addAttribute("totalTreatments", this.treatmentService.getAllTreatments().size());
 
         return "admin/admin-layout";
     }
